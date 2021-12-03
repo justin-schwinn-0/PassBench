@@ -3,13 +3,13 @@ import java.net.*;
 
 public class NetRequestManager
 {
-    private Socket client;
-    private String IP = "173.172.0.219";
-    private int port = 7845;
-    private PrintWriter out;
-    private BufferedReader in;
+    private static Socket client;
+    private static String IP = "173.172.0.219";
+    private static int port = 7845;
+    private static PrintWriter out;
+    private static BufferedReader in;
 
-    public String sendRecord(Record r)
+    public static String sendRecord(Record r)
     {
         try 
         {
@@ -24,7 +24,7 @@ public class NetRequestManager
 
         return "Record sent!";
     }
-    public void connect() throws Exception
+    public static void connect() throws Exception
     {
         client = new Socket(IP,port);
         out = new PrintWriter(client.getOutputStream(), true);
