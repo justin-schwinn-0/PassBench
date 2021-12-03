@@ -37,6 +37,9 @@ public class Record
 
         cpu = System.getProperty("os.arch");
 
-        
+    }
+    public String toString()
+    {
+        return user +"::"+ cpu +"::"+ dataType +"::"+ testType+"::"+ perf;
     }
 }

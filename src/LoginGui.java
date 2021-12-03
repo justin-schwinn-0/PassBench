@@ -1,49 +1,82 @@
 //Gui for the login
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 
-public class LoginGui {
+public class LoginGui implements ActionListener {
+	
+	//All the variables for our GUI
+	String username;
+	String password;
+	
+	JFrame guiFrame;
+	
+	JPanel guiPanel;
+	
+	JLabel nameLabel;
+	JLabel passLabel;
+	
+	JTextField nameText;
+	JTextField passText;
+	
+	JButton loginButton;
+	
 	
 	//Constructor for the loginGUI
 	LoginGui(){
 		
-		String username;
-		String password;
-		
 		//Create the basic frame for our login window
-		JFrame GuiFrame = new JFrame("Login");
-		GuiFrame.setSize(200, 200);
+		guiFrame = new JFrame("Login");
+		guiFrame.setSize(500, 500);
 		
 		//Add a panel for us to put elements on, we will not use a specific layout for it so we can have
 		//greater control over object placement
-		JPanel GuiPanel = new JPanel();
-		GuiPanel.setLayout(null);
-		GuiFrame.add(GuiPanel);
+		guiPanel = new JPanel();
+		guiPanel.setLayout(null);
+		guiFrame.add(guiPanel);
 		
 		//This will allow us to close the frame
-		GuiFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Set up the text saying "Username" and "Password"
-		JLabel NameLabel = new JLabel("Username");
-		NameLabel.setBounds(50, 50, 100, 50);
+		nameLabel = new JLabel("Username");
+		nameLabel.setBounds(50, 50, 100, 50);
 		
-		JLabel PassLabel = new JLabel("Password");
-		PassLabel.setBounds(50, 100, 100, 50);
+		passLabel = new JLabel("Password");
+		passLabel.setBounds(50, 100, 100, 50);
 		
-		GuiPanel.add(NameLabel);
-		GuiPanel.add(PassLabel);
+		guiPanel.add(nameLabel);
+		guiPanel.add(passLabel);
 		
 		//Now set up the textboxes for the username and password, each one will have 15 characters
-		JTextField NameText = new JTextField();
-		JTextField PassText = new JTextField();
+		nameText = new JTextField();
+		passText = new JTextField();
 		
-		NameText.setBounds(125, 65, 100, 25);
-		PassText.setBounds(125, 115, 100, 25);
+		nameText.setBounds(125, 65, 100, 25);
+		passText.setBounds(125, 115, 100, 25);
 		
-		GuiPanel.add(NameText);
-		GuiPanel.add(PassText);
+		guiPanel.add(nameText);
+		guiPanel.add(passText);
 		
-		GuiFrame.setVisible(true);
+		//Add the button that will attempt a login when pressed and it's action listener
+		loginButton = new JButton("Login");
+		loginButton.setBounds(125, 165, 50, 50);
+		guiPanel.add(loginButton);
+		loginButton.addActionListener(this);
+		
+		guiFrame.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		//If the login button has been pressed, set the username and password values to the input in their associated
+		//text boxes. Set the GUI to invisible
+		username = nameText.getText();
+		password = nameText.getText();
+		guiFrame.setVisible(false);
+		
 	}
 	
 }
