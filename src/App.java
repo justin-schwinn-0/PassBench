@@ -11,7 +11,7 @@ public class App {
 
        //MainMenuGUI m = new MainMenuGUI();
 
-       //System.out.println(NetRequestManager.sendRecord(g));
+       System.out.println(NetRequestManager.sendRecord(g));
 
     }
 }
