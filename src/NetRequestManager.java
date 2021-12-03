@@ -19,7 +19,7 @@ public class NetRequestManager
         } 
         catch (Exception e) 
         {
-            //TODO: handle exception
+           System.out.println(e.getStackTrace());
         }
 
         return "Record sent!";
