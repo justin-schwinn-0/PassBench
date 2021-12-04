@@ -7,9 +7,9 @@ public class InputValidator
             return "Invalid characters in username";
         }
 
-        if(username.length() < 10 || username.length() > 20)
+        if(username.length() <= 5 || username.length() >= 20)
         {
-            return "bad username length, 10 < N < 20";
+            return "bad username length, 5 <= N < 20";
         }
 
         if (password.compareTo(passwordConfirm) != 0)
