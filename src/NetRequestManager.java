@@ -39,6 +39,21 @@ public class NetRequestManager
 
         return "Account creation error";
     }
+    public static String LoginUser(String username, String password)
+    {
+        try 
+        {
+            connect();
+            out.println("logU%"+username+"::"+password);
+            return in.readLine();
+        } 
+        catch (Exception e) 
+        {
+          e.printStackTrace();
+        }
+        return "Login error";
+
+    }
     public static void connect() throws Exception
     {
         client = new Socket(IP,port);
