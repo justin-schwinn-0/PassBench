@@ -29,7 +29,7 @@ public class NetRequestManager
         try 
         {
             connect();
-            out.println("addu%"+username+"::"+password);
+            out.println("adduU%"+username+"::"+password);
             return in.readLine();
         } 
         catch (Exception e) 
