@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,6 +25,7 @@ public class RunTestGUI implements ActionListener{
 	JLabel testLabel;
 	JLabel iterLabel;
 	JLabel trialsLabel;
+	JLabel msg;
 	
 	//Buttons
 	JButton submitButton;
@@ -45,13 +47,15 @@ public class RunTestGUI implements ActionListener{
 	//Bool value to see if both of our inputs are valid
 	boolean isValid;
 
+	String user;
 
-
-	SaveRecordsGUI saveRecord;
+	SaveOrSendGUI nextUI;
 	
 	//Constructor
-	RunTestGUI(){
+	RunTestGUI(String name){
 				
+		user = name;
+
 		//Set isValid to true by default
 		isValid = true;
 		
@@ -115,6 +119,10 @@ public class RunTestGUI implements ActionListener{
 		submitButton = new JButton("Begin Test");
 		submitButton.setBounds(200, 265, 100, 50);
 		RunTestPanel.add(submitButton);
+
+		msg = new JLabel("");
+		msg.setBounds(150,225,300,50);
+		RunTestPanel.add(msg);
 		
 		//Add an action listener to our submit button
 		submitButton.addActionListener(this);
@@ -169,19 +177,20 @@ public class RunTestGUI implements ActionListener{
 
 		if(isValid) 
         {
-			Record r = TestRunner.runTest(valueType.charAt(0), testType, Integer.parseInt(iterations), Integer.parseInt(trials));
+			Record r = TestRunner.runTest(valueType.charAt(0), testType, Integer.parseInt(iterations), Integer.parseInt(trials),user);
 
             //System.out.println(r.dataType);
             //System.out.println(r.testType);
             //System.out.println(r.perf);
 
-            saveRecord = new SaveRecordsGUI(r);
+            nextUI = new SaveOrSendGUI(r);
+			RunTestFrame.dispose();
 		}
-		else {
-			System.out.println("Error. Please input correct parameters");
+		else 
+		{
 			
-            //TODO: change this to a msg on the UI
-
+            msg.setText("Error. Please input correct parameters");
+			msg.setForeground(Color.red);
 			//Reset isValid to allow for more attempts
 			isValid = true;
 		}

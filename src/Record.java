@@ -9,7 +9,7 @@ public class Record
     String perf;
 
 
-    public Record(String[] args)
+    public Record(String[] args,String name)
     {
         if(args[0].charAt(0) == 'f')
             dataType = "Floating Point";
@@ -33,7 +33,7 @@ public class Record
 
         //TODO: Add users;
 
-        user = "TBI";
+        user = name;
 
         cpu = System.getProperty("os.arch");
 
@@ -41,5 +41,9 @@ public class Record
     public String toString()
     {
         return user +"::"+ cpu +"::"+ dataType +"::"+ testType+"::"+ perf;
+    }
+    public String print()
+    {
+        return user +"\n"+ cpu +"\n"+ dataType +"\n"+ testType+"\n"+ perf;
     }
 }

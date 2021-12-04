@@ -18,10 +18,14 @@ public class MainMenuGUI implements ActionListener{
 	JButton wipButton;
 	JButton wipButton2;
 	JButton wipButton3;
+	String user;
 	
 	//Constructor
-	MainMenuGUI(){
+	MainMenuGUI(String username){
 		
+
+		user = username;
+
 		//Create the frame and panel that we will be using
 		menuFrame = new JFrame("Main Menu");
 		menuFrame.setSize(500, 500);
@@ -65,7 +69,7 @@ public class MainMenuGUI implements ActionListener{
 		if(e.getSource() == runTestButton) {
 			
 			//Create an instance of RunTestGUI
-			runTest = new RunTestGUI();
+			runTest = new RunTestGUI(user);
 			runTest = null;
 			//Set the menu to invisible
 			//menuFrame.setVisible(false);

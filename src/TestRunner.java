@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 
 public class TestRunner 
 {
-    public static Record runTest(char dt, String testtype, int iter, int trials)
+    public static Record runTest(char dt, String testtype, int iter, int trials,String name)
     {
        
         String[] args = new String[5];
@@ -30,7 +30,7 @@ public class TestRunner
 
             String[] lines = temp.split("\n");
 
-            return new Record(lines);
+            return new Record(lines,name);
         }
         catch(Exception e)
         {

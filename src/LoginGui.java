@@ -16,11 +16,13 @@ public class LoginGui implements ActionListener {
 	
 	JLabel nameLabel;
 	JLabel passLabel;
+	JLabel msg;
 	
 	JTextField nameText;
 	JTextField passText;
 	
 	JButton loginButton;
+	JButton CreateAccountButton;
 	
 	
 	//Constructor for the loginGUI
@@ -61,9 +63,18 @@ public class LoginGui implements ActionListener {
 		
 		//Add the button that will attempt a login when pressed and it's action listener
 		loginButton = new JButton("Login");
-		loginButton.setBounds(125, 165, 50, 50);
+		loginButton.setBounds(125, 165, 150, 50);
 		guiPanel.add(loginButton);
 		loginButton.addActionListener(this);
+
+		CreateAccountButton = new JButton("Create Account");
+		CreateAccountButton.setBounds(125, 225, 150, 25);
+		guiPanel.add(CreateAccountButton);
+		CreateAccountButton.addActionListener(this);
+
+		msg = new JLabel("");
+		msg.setBounds(125,125,300,50);
+		guiPanel.add(msg);
 		
 		guiFrame.setVisible(true);
 	}
@@ -74,9 +85,29 @@ public class LoginGui implements ActionListener {
 		//If the login button has been pressed, set the username and password values to the input in their associated
 		//text boxes. Set the GUI to invisible
 		username = nameText.getText();
-		password = nameText.getText();
-		guiFrame.setVisible(false);
-		
+		password = passText.getText();
+
+		if(e.getSource() == loginButton)
+		{
+			String result = InputValidator.validLogin(username, password);
+			msg.setText(result);
+			if(result.compareTo("") == 0)
+			{
+				result = NetRequestManager.LoginUser(username, password);
+				msg.setText(result);
+				if(result.compareTo("") == 0)
+				{
+					guiFrame.dispose();
+					MainMenuGUI  m = new MainMenuGUI(username);	
+				}
+			}
+		}
+
+		if(e.getSource() == CreateAccountButton)
+		{
+			guiFrame.dispose();
+			CreateAccountGUI c = new CreateAccountGUI();
+		}
 	}
 	
 }
