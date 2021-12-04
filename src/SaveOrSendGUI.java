@@ -83,7 +83,6 @@ public class SaveOrSendGUI implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		//If the Save button has been pressed, set the userChoice value to Send and remove the frame
 		if(e.getSource() == SaveButton) {
-			userChoice = "Save";
 			SoSFrame.setVisible(false);
 
 			SaveRecordsGUI s = new SaveRecordsGUI(r);
@@ -93,14 +92,12 @@ public class SaveOrSendGUI implements ActionListener{
 		
 		//Do the same if Send is pressed instead
 		else if (e.getSource() == SendButton) {
-			userChoice = "Send";
 			//SoSFrame.setVisible(false);
 
 			NetRequestManager.sendRecord(r);
 
 			SoSFrame.dispose();
 		}
-		System.out.println(userChoice);
 		
 	}
 
