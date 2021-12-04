@@ -24,6 +24,21 @@ public class NetRequestManager
 
         return "Record sent!";
     }
+    public static String addUserAttempt(String username, String password)
+    {
+        try 
+        {
+            connect();
+            out.println("addu%"+username+"::"+password);
+            return in.readLine();
+        } 
+        catch (Exception e) 
+        {
+          e.printStackTrace();
+        }
+
+        return "Account creation error";
+    }
     public static void connect() throws Exception
     {
         client = new Socket(IP,port);
