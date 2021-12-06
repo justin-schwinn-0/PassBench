@@ -89,18 +89,15 @@ public class LoginGui implements ActionListener {
 
 		if(e.getSource() == loginButton)
 		{
-			String result = InputValidator.validLogin(username, password);
+			
+			String result = NetRequestManager.LoginUser(username, password);
 			msg.setText(result);
 			if(result.compareTo("") == 0)
 			{
-				result = NetRequestManager.LoginUser(username, password);
-				msg.setText(result);
-				if(result.compareTo("") == 0)
-				{
-					guiFrame.dispose();
-					MainMenuGUI  m = new MainMenuGUI(username);	
-				}
+				guiFrame.dispose();
+				MainMenuGUI  m = new MainMenuGUI(username);	
 			}
+			
 		}
 
 		if(e.getSource() == CreateAccountButton)

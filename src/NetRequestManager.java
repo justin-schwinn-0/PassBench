@@ -22,7 +22,7 @@ public class NetRequestManager
           e.printStackTrace();
         }
 
-        return "Record sent!";
+        return "something bad";
     }
     public static String addUserAttempt(String username, String password)
     {
@@ -43,9 +43,17 @@ public class NetRequestManager
     {
         try 
         {
-            connect();
-            out.println("logU%"+username+"::"+password);
-            return in.readLine();
+            String r = InputValidator.validLogin(username, password);
+            if(r.compareTo("") == 0)
+            {
+                connect();
+                out.println("logU%"+username+"::"+password);
+                return in.readLine();
+            }
+            else
+            {
+                return r;
+            }
         } 
         catch (Exception e) 
         {

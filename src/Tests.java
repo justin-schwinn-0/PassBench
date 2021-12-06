@@ -2,23 +2,24 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.io.FileReader;
 import java.util.Scanner;
-
-import javax.xml.namespace.QName;
 
 import org.junit.*;
 
 public class Tests
 {
     @Test
-    public void testRun() // Runnign this though JUNIT invariably causes working directory realted issues, this one will never pass but the stressTest works
+    public void testRun() // Running this though JUNIT invariably causes working directory realted issues, this one will never pass but the stressTest works
     {
-        Record r1 = TestRunner.runTest('i', "Addition", 100, 100);
-        Record r2 = TestRunner.runTest('f', "Addition", 100, 100);
-        Record r3 = TestRunner.runTest('i', "Subtraction", 100, 100);
-        Record r4 = TestRunner.runTest('i', "Multiplication", 100, 100);
-        Record r5 = TestRunner.runTest('i', "Division", 100, 100);
+        TestRunner.filePath = "C:\\Users\\Justin\\Desktop\\Fall 21\\CS projects\\CS3354Project\\benchmarker\\cs3354Project\\src\\StressTest"; // hack to make it work on my machine
+
+        Record r1 = TestRunner.runTest('i', "Addition", 100, 100,"name");
+        Record r2 = TestRunner.runTest('f', "Addition", 100, 100,"name");
+        Record r3 = TestRunner.runTest('i', "Subtraction", 100, 100,"name");
+        Record r4 = TestRunner.runTest('i', "Multiplication", 100, 100,"name");
+        Record r5 = TestRunner.runTest('i', "Division", 100, 100,"name");
+
+        TestRunner.filePath = "StressTest";
 
         assertEquals("Integer", r1.dataType);
         assertEquals("Floating Point", r2.dataType);
@@ -29,29 +30,40 @@ public class Tests
 
     }
 
+    @Test
     public void testLogin()
     {
-    //runLogin testingLogin = new runLogin("myUsername", "Password1!");
-    //testingLogin = new runLogin("myUsername", "abc");
-    }
+        String r1 = NetRequestManager.LoginUser("thomas", "password");
+        String r2 = NetRequestManager.LoginUser("a", "b");
+        String r3 = NetRequestManager.LoginUser("tim", "password");
 
-    public void testButton()
-    {
-    //runButton testButton = new runButton(1);    
-    }
+        assertEquals("", r1);
+        assertEquals("Wrong username or password", r2);
+        assertEquals("Wrong username or password", r3);
 
+
+
+    }
+    @Test
     public void testSend()
     {
-    //runSend testSend = new runSend("I7-8650U", "71.7.151.36");
-    //runSend testSend = new runSend("", "71.7.151.36");
-    //runSend testSend = new runSend("I7-8650U", "71.7.15");
+        TestRunner.filePath = "C:\\Users\\Justin\\Desktop\\Fall 21\\CS projects\\CS3354Project\\benchmarker\\cs3354Project\\src\\StressTest"; // hack to make it work on my machine
+
+        Record r = TestRunner.runTest('f', "Addition", 100, 100,"REMOVE");
+
+        TestRunner.filePath = "StressTest";
+
+        String res = NetRequestManager.sendRecord(r);
+
+        assertEquals("Record added", res);
+
     }
     @Test
     public void testSave()
     {
         String[] args = {"f","a","2.543e+08"};
         String fileName = "testSave.txt";
-        Record r = new Record(args);
+        Record r = new Record(args,"name");
         String[] lines = new String[0];
         LocalDataManager.save(fileName, r);
 
