@@ -1,5 +1,6 @@
 //Gui for the login
 import java.awt.event.ActionListener;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 
@@ -92,6 +93,7 @@ public class LoginGui implements ActionListener {
 			
 			String result = NetRequestManager.LoginUser(username, password);
 			msg.setText(result);
+			msg.setForeground(Color.red);
 			if(result.compareTo("") == 0)
 			{
 				guiFrame.dispose();

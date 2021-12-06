@@ -4,7 +4,7 @@ import java.net.*;
 public class NetRequestManager
 {
     private static Socket client;
-    private static String IP = "173.172.0.219";
+    private static String IP = "10.176.200.11";
     private static int port =  25565;
     private static PrintWriter out;
     private static BufferedReader in;
