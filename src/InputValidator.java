@@ -2,7 +2,7 @@ public class InputValidator
 {
     public static String validCreateUser(String username, String password, String passwordConfirm)
     {
-        if (!username.matches("^[a-zA-Z0-9]*$"))
+        if (!username.matches("[a-zA-Z0-9]*$"))
         {
             return "Invalid characters in username";
         }
@@ -11,20 +11,17 @@ public class InputValidator
         {
             return "bad username length, 5 <= N < 20";
         }
-
-        if (password.compareTo(passwordConfirm) != 0)
+        if(!password.matches("[a-zA-Z0-9]*$"))
         {
-            return "Passwords do not match";
+            return "Invalid characters in Password";
         }
-
         if (password.length() <= 6 || password.length() >= 24)
         {
             return "Bad passowrd length, 6 < N <24";
         }
-
-        if(!password.matches("\\A\\p{ASCII}*\\z"))
+        if (password.compareTo(passwordConfirm) != 0)
         {
-            return "Invalid characters in Password";
+            return "Passwords do not match";
         }
 
         return "";

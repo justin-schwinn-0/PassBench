@@ -92,18 +92,12 @@ public class CreateAccountGUI implements ActionListener{
 
 		if(e.getSource() == caButton)
 		{
-			String result = InputValidator.validCreateUser(username, password, confPass);
+			String result = NetRequestManager.addUserAttempt(username, password,confPass);
 			msg.setText(result);
 			if(result.compareTo("") == 0)
 			{
-				result = NetRequestManager.addUserAttempt(username, password);
-				msg.setText(result);
-				if(result.compareTo("") == 0)
-				{
-					caFrame.dispose();
-					LoginGui l = new LoginGui();
-				}
-
+				caFrame.dispose();
+				LoginGui l = new LoginGui();
 			}
 		}
 		

@@ -29,6 +29,31 @@ public class Tests
         assertEquals("Division", r5.testType);
 
     }
+    @Test
+    public void testCreateAccount()
+    {
+        String r1 = NetRequestManager.addUserAttempt("tom", "password","password"); // bad username
+        String r2 = NetRequestManager.addUserAttempt("tomasfasfasfsafasfsafasfasfsafsafasfasfasfasf", "password","password"); // bad username
+        String r3 = NetRequestManager.addUserAttempt("thomas", "password","asdasdad"); // confirmatoin doesnt match
+        String r4 = NetRequestManager.addUserAttempt("thomas", "password","password"); // successful creation
+        String r5 = NetRequestManager.addUserAttempt("thomas", "saddasdsadsadasdasdsadasdsadasdasd","saddasdsadsadasdasdsadasdsadasdasd"); // bad password length
+        String r6 = NetRequestManager.addUserAttempt("thomas", "a","a"); // bad password length
+        String r7 = NetRequestManager.addUserAttempt("&*^*^*^$", "a","a"); // invalid characters in username
+        String r8 = NetRequestManager.addUserAttempt("thomas", "%^*#%$^$%^&" , "%^*#%$^$%^&" ); // bad password characters
+
+        assertEquals("bad username length, 5 <= N < 20", r1);
+        assertEquals("bad username length, 5 <= N < 20", r2);
+
+        assertEquals("Passwords do not match", r3);
+
+        assertEquals("Username taken", r4);
+
+        assertEquals("Bad passowrd length, 6 < N <24", r5);
+        assertEquals("Bad passowrd length, 6 < N <24", r6);
+
+        assertEquals("Invalid characters in username", r7);
+        assertEquals("Invalid characters in Password", r8);
+    }
 
     @Test
     public void testLogin()

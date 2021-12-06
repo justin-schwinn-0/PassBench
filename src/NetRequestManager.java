@@ -24,13 +24,19 @@ public class NetRequestManager
 
         return "something bad";
     }
-    public static String addUserAttempt(String username, String password)
+    public static String addUserAttempt(String username, String password, String p2)
     {
         try 
         {
-            connect();
-            out.println("addU%"+username+"::"+password);
-            return in.readLine();
+            String result = InputValidator.validCreateUser(username, password, p2);
+            if(result.compareTo("") == 0)
+            {
+                connect();
+                out.println("addU%"+username+"::"+password);
+                return in.readLine();
+            }
+            else
+                return result;
         } 
         catch (Exception e) 
         {
