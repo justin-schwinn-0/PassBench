@@ -30,7 +30,7 @@ public class CreateAccountGUI implements ActionListener{
 	CreateAccountGUI(){
 		//Create the basic frame for our login window
 		caFrame = new JFrame("Create Account");
-		caFrame.setSize(500, 750);
+		caFrame.setSize(400, 450);
 		
 		//Add a panel for us to put elements on, we will not use a specific layout for it so we can have
 		//greater control over object placement
@@ -52,12 +52,13 @@ public class CreateAccountGUI implements ActionListener{
 		caConfpassLabel.setBounds(50, 150, 200, 50);
 		
 		msg = new JLabel("");
-		msg.setBounds(50,150,50,50);
+		msg.setBounds(100,175,200,50);
 		
 		caPanel.add(caNameLabel);
 		caPanel.add(caPassLabel);
 		caPanel.add(caConfpassLabel);
-		
+		caPanel.add(msg);
+
 		//Now set up the textboxes for the username and password, each one will have 15 characters
 		caNameText = new JTextField();
 		caPassText = new JTextField();

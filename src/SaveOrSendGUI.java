@@ -53,15 +53,15 @@ public class SaveOrSendGUI implements ActionListener{
 		SendButton.setBounds(400, 100, 80, 50);
 
 		recordL1 = new JLabel(r.user);
-		recordL1.setBounds(235, 40, 60, 50);
+		recordL1.setBounds(235, 40, 100, 50);
 		recordL2 = new JLabel(r.cpu);
-		recordL2.setBounds(235, 51, 60, 50);
+		recordL2.setBounds(235, 51, 100, 50);
 		recordL3 = new JLabel(r.dataType);
-		recordL3.setBounds(235, 62, 60, 50);
+		recordL3.setBounds(235, 62, 100, 50);
 		recordL4 = new JLabel(r.testType);
-		recordL4.setBounds(235, 73, 60, 50);
+		recordL4.setBounds(235, 73, 100, 50);
 		recordL5 = new JLabel(r.perf);
-		recordL5.setBounds(235, 84, 60, 50);
+		recordL5.setBounds(235, 84, 100, 50);
 
 		SoSPanel.add(recordL1);
 		SoSPanel.add(recordL2);
