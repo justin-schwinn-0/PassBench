@@ -35,7 +35,9 @@ public class Record
 
         user = name;
 
-        cpu = System.getProperty("os.arch");
+        cpu = System.getenv("PROCESSOR_ARCHITECTURE");
+
+
 
     }
     public String toString()

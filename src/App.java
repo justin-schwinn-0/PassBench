@@ -3,7 +3,7 @@ public class App {
     {
         //CreateAccountGUI c = new CreateAccountGUI();
         LoginGui l = new LoginGui();
-        //RunTestGUI r = new RunTestGUI();
+        //RunTestGUI r = new RunTestGUI("User");
         //SaveRecordsGUI s = new SaveRecordsGUI();
 
         //Record g =TestRunner.runTest('f', "Multiplication", 100000, 5);
